@@ -1,0 +1,18 @@
+includes:
+	- ../vendor/phpstan/phpstan-nette/extension.neon
+	- ../vendor/phpstan/phpstan-nette/rules.neon
+	- ../vendor/phpstan/phpstan-doctrine/extension.neon
+	- ../vendor/phpstan/phpstan-strict-rules/rules.neon
+
+parameters:
+	level: max
+	fileExtensions:
+		- php
+		- phpt
+	paths:
+		- ../app
+		- ../bin
+		- ../migrations
+		- ../tests
+		- ../www
+	tmpDir: ../temp/phpstan

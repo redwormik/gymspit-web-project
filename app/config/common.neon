@@ -1,0 +1,57 @@
+parameters:
+
+
+extensions:
+	nettrine.annotations: Nettrine\Annotations\DI\AnnotationsExtension
+	nettrine.cache: Nettrine\Cache\DI\CacheExtension
+	nettrine.dbal: Nettrine\DBAL\DI\DbalExtension
+	nettrine.orm: Nettrine\ORM\DI\OrmExtension
+	nettrine.orm.annotations: Nettrine\ORM\DI\OrmAnnotationsExtension
+	nettrine.orm.cache: Nettrine\ORM\DI\OrmCacheExtension
+	webpack: Oops\WebpackNetteAdapter\DI\WebpackExtension(%debugMode%)
+
+
+application:
+	mapping:
+		*: GymSpit\WebProject\*Module\Presenters\*Presenter
+
+
+nettrine.dbal:
+	connection:
+		driver: pdo_mysql
+		host: 127.0.0.1
+		dbname: gymspit-web-project
+		charset: utf8
+		user:
+		password:
+		defaultTableOptions:
+			charset: utf8mb4
+			collate: utf8mb4_unicode_ci
+	debug:
+		panel: %debugMode%
+
+
+nettrine.orm.annotations:
+	mapping:
+		GymSpit\WebProject: %appDir%
+
+
+session:
+	expiration: 14 days
+
+
+webpack:
+	build:
+		directory: %wwwDir%/build
+		publicPath: build/
+	devServer:
+		url: http://127.0.0.1:3000
+	manifest:
+		name: asset-manifest.json
+
+
+decorator:
+
+
+services:
+	@Nette\Routing\Router: GymSpit\WebProject\Router\RouterFactory::createRouter

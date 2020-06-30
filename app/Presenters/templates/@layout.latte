@@ -1,0 +1,22 @@
+{import @commonBlocks.latte}
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>{ifset title}{include title|stripHtml|trim} | {/ifset}GymŠpit web project</title>
+
+	{block head /}
+</head>
+
+<body>
+	<main class="container">
+		{include flashes $flashes}
+
+		{include content}
+	</main>
+
+	{block scripts /}
+</body>
+</html>

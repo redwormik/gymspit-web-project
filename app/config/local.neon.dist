@@ -1,0 +1,23 @@
+includes:
+	- dev-console.neon
+
+
+parameters:
+
+
+console:
+	url: http://127.0.0.1/gymspit-web-project/www/
+
+
+nettrine.dbal:
+	connection:
+		user: root
+		password: pass
+
+
+webpack:
+	devServer:
+		url: http://127.0.0.1:3000
+
+
+services:
