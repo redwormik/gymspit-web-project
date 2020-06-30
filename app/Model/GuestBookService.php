@@ -32,4 +32,15 @@ class GuestBookService
 	{
 		return $this->repository->findBy([], ['createdAt' => 'DESC']);
 	}
+
+
+	public function create(string $author, string $text): Entities\GuestBookPost
+	{
+		$post = new Entities\GuestBookPost($author, $text, new \DateTime);
+
+		$this->entityManager->persist($post);
+		$this->entityManager->flush();
+
+		return $post;
+	}
 }

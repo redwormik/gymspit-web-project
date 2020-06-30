@@ -17,4 +17,29 @@ class HomepagePresenter extends UI\Presenter
 	{
 		$this->template->posts = $this->guestBookModel->getAll();
 	}
+
+
+	protected function createComponentPostForm(): UI\Form
+	{
+		$form = new UI\Form;
+
+		$form->addText('author', 'Autor')
+			->setRequired('Prosím vyplňte autora');
+
+		$form->addTextArea('text', 'Text')
+			->setRequired('Prosím vyplňte text');
+
+		$form->addSubmit('submit', 'Odeslat');
+
+		$form->onSuccess[] = [$this, 'postFormSucceeded'];
+		return $form;
+	}
+
+
+	public function postFormSucceeded(UI\Form $form, \stdClass $values): void
+	{
+		$this->guestBookModel->create($values->author, $values->text);
+		$this->flashMessage('Zpráva odeslána.', 'success');
+		$this->redirect('this');
+	}
 }
