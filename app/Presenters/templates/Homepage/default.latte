@@ -1,1 +1,8 @@
 {block content}
+
+<h1 n:block="title">GuestBook</h1>
+
+<div n:foreach="$posts as $post">
+	<h2>{$post->author}, {$post->createdAt|date:'j. n. Y, H:i:s'}</h2>
+	<p>{$post->text|breaklines}</p>
+</div>
