@@ -1,0 +1,12 @@
+#!/usr/bin/env php
+<?php
+declare(strict_types = 1);
+
+require __DIR__ . '/../vendor/autoload.php';
+
+$configurator = GymSpit\WebProject\Bootstrap::boot();
+$container = $configurator->createContainer();
+$application = $container->getByType(Contributte\Console\Application::class);
+$exitCode = $application->run();
+
+exit($exitCode > 255 ? 255 : $exitCode);

@@ -1,0 +1,21 @@
+extensions:
+	console: Contributte\Console\DI\ConsoleExtension(%consoleMode%)
+	nettrine.dbal.console: Nettrine\DBAL\DI\DbalConsoleExtension
+	nettrine.orm.console: Nettrine\ORM\DI\OrmConsoleExtension
+	nettrine.migrations: Nettrine\Migrations\DI\MigrationsExtension
+
+
+console:
+	name: GymŠpit Web Project
+	version: %version.console%
+	url: https://www.wormik.net/gymspit-web-project
+	catchExceptions: %debugMode%
+	autoExit: false
+
+
+nettrine.migrations:
+	directory: %appDir%/../migrations
+	namespace: GymSpit\WebProject\Migrations
+
+
+services:
