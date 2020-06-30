@@ -40,6 +40,12 @@ class HomepagePresenter extends UI\Presenter
 	{
 		$this->guestBookModel->create($data->author, $data->text);
 		$this->flashMessage('Zpráva odeslána.', 'success');
-		$this->redirect('this');
+
+		if ($this->isAjax()) {
+			$this->redrawControl('flashes');
+			$this->redrawControl('posts');
+		} else {
+			$this->redirect('this');
+		}
 	}
 }

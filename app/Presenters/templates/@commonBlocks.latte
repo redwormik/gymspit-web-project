@@ -1,5 +1,5 @@
 {define flashes $flashes}
-	<div>
+	<div n:snippet="flashes">
 		<div n:foreach="$flashes as $flash" n:class="alert, 'alert-' . $flash->type, alert-dismissable, fade, show" role="alert">
 			{$flash->message}
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">

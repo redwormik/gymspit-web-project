@@ -4,7 +4,33 @@
 
 {control postForm}
 
-<div n:foreach="$posts as $post">
-	<h2>{$post->author}, {$post->createdAt|date:'j. n. Y, H:i:s'}</h2>
-	<p>{$post->text|breaklines}</p>
+<div n:snippet="posts">
+	<div n:foreach="$posts as $post">
+		<h2>{$post->author}, {$post->createdAt|date:'j. n. Y, H:i:s'}</h2>
+		<p>{$post->text|breaklines}</p>
+	</div>
 </div>
+{/block}
+
+
+<script n:block="scripts">
+	$('#' + {$presenter[postForm]->elementPrototype->id}).on('submit', function (event) {
+		var form = this.tagName === 'FORM' ? this : this.form;
+		if (!form) {
+			return;
+		}
+
+		event.preventDefault();
+		$.post({
+			url: form.action || window.location.pathname + window.location.search,
+			data: new FormData(form),
+			processData: false,
+			contentType: false,
+		}).then(function (data) {
+			for (var id in data.snippets || {}) {
+				$('#' + id).html(data.snippets[id]);
+			}
+		});
+		form.reset();
+	});
+</script>
