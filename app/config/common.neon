@@ -8,7 +8,6 @@ extensions:
 	nettrine.orm: Nettrine\ORM\DI\OrmExtension
 	nettrine.orm.annotations: Nettrine\ORM\DI\OrmAnnotationsExtension
 	nettrine.orm.cache: Nettrine\ORM\DI\OrmCacheExtension
-	webpack: Oops\WebpackNetteAdapter\DI\WebpackExtension(%debugMode%)
 
 
 application:
@@ -38,16 +37,6 @@ nettrine.orm.annotations:
 
 session:
 	expiration: 14 days
-
-
-webpack:
-	build:
-		directory: %wwwDir%/build
-		publicPath: build/
-	devServer:
-		url: http://127.0.0.1:3000
-	manifest:
-		name: asset-manifest.json
 
 
 decorator:
