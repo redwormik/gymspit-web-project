@@ -36,9 +36,9 @@ class HomepagePresenter extends UI\Presenter
 	}
 
 
-	public function postFormSucceeded(UI\Form $form, \stdClass $values): void
+	public function postFormSucceeded(UI\Form $form, GuestBookPostFormData $data): void
 	{
-		$this->guestBookModel->create($values->author, $values->text);
+		$this->guestBookModel->create($data->author, $data->text);
 		$this->flashMessage('Zpráva odeslána.', 'success');
 		$this->redirect('this');
 	}
