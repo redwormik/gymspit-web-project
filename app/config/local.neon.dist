@@ -15,9 +15,4 @@ nettrine.dbal:
 		password: pass
 
 
-webpack:
-	devServer:
-		url: http://127.0.0.1:3000
-
-
 services:
